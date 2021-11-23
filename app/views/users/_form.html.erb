@@ -1,0 +1,82 @@
+<div class="container">
+  <%= render 'shared/error'%> 
+<div class="row justify-content-center">
+    <div class="col-12">
+      <%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+        <div class="form-group row">
+          <%= f.label :username, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "user name" %>
+          </div>
+        </div>
+    <div class="form-group row">
+          <%= f.label :email, class: "col-2 col-form-label text-light" %>
+          <div class="col-10"> 
+            <%= f.text_field :email, class: "form-control shadow rounded", placeholder: "email" %>
+          </div>
+        </div>
+    
+      <div class="form-group row">
+          <%= f.label :password, class: "col-2 col-form-label text-light" %>
+          <div class="col-10"> 
+            <%= f.text_field :password, type: "password", class: "form-control shadow rounded", placeholder: "password" %>
+          </div>
+        </div>
+      <div class="form-group row">
+          <%= f.label :active, class: "col-2 col-form-label text-light" %>
+          <div class="col-10"> 
+            <%= f.select :active,  ['yes', 'no'], class: "form-control shadow rounded" %>
+            
+          </div>
+        </div>
+
+          <%= f.fields_for :address do |addresses_form| %>
+          <div class="form-group row">
+              <%= addresses_form.label :address_line, class: "col-2 col-form-label text-light" %>
+              <div class="col-10"> 
+                <%= addresses_form.text_field :address_line, type: "text", class: "form-control shadow rounded", placeholder: "address-line" %>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <%= addresses_form.label :city, class: "col-2 col-form-label text-light" %>
+              <div class="col-10"> 
+                <%= addresses_form.text_field :city, type: "text", class: "form-control shadow rounded", placeholder: "city" %>
+              </div>
+          </div>
+          
+          <div class="form-group row">
+              <%= addresses_form.label :state, class: "col-2 col-form-label text-light" %>
+              <div class="col-10"> 
+                <%= addresses_form.text_field :state, type: "text", class: "form-control shadow rounded", placeholder: "state" %>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <%= addresses_form.label :zip, class: "col-2 col-form-label text-light" %>
+              <div class="col-10"> 
+                <%= addresses_form.text_field :zip, type: "text", class: "form-control shadow rounded", placeholder: "zip" %>
+              </div>
+          </div>  
+          <% end %>
+
+          <%= f.fields_for :phone_numbers do |phone_form| %>
+            <%= render 'phonefield', phone_form: phone_form%>
+          <% end %>
+          
+       
+        <div class="form-group row justify-content-center">
+          <%= f.submit class: "btn btn-outline-light btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+
+    <script>
+      $('f').on("click", ".add_fields", function(event) {
+        console.log("clicked")
+        
+      })
+    
+    </script>
+   
+  </div>

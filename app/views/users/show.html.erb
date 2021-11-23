@@ -1,0 +1,28 @@
+<div id = page-content>
+    <h1 class="text-center mt-4">details of the user</h1>
+    <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-body">
+            <h5 class="card-title"><span class="text">username:</span><%= @user.username%></h5>
+            <p class="card-text"><span class="text">email:</span><%= @user.email %></p>
+            <p class="card-text"><span class="text">password:</span><%= @user.password %></p>
+            <% @user.phone_numbers.each do |p|%>
+                <p class="card-text"><span class="text">phonenumber:</span><%= p.phonenumber %></p>
+
+            <%end%>
+            
+                <p class="card-text"><span class="text">address-line:</span> <%= @user.address.address_line %></p>
+                <p class="card-text"><span class="text">city:</span><%= @user.address.city %></p>
+                <p class="card-text"><span class="text">state:</span><%= @user.address.state %></p>
+                <p class="card-text"><span class="text">zip:</span><%= @user.address.zip %></p>
+
+            <%= link_to "Delete", user_path(@user), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
